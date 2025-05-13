@@ -1,0 +1,148 @@
+Listado de rutas de carpetas para el volumen Windows
+El número de serie del volumen es B824-833F
+C:.
+|   docker-compose.yml
+|   estructura.txt
+|   README.md
+|   
++---.idea
+|       .gitignore
+|       compiler.xml
+|       encodings.xml
+|       jarRepositories.xml
+|       misc.xml
+|       modules.xml
+|       task-management-system.iml
+|       vcs.xml
+|       workspace.xml
+|       
++---api-gateway
+|   \---api-gateway
+|       |   .gitattributes
+|       |   .gitignore
+|       |   HELP.md
+|       |   mvnw
+|       |   mvnw.cmd
+|       |   pom.xml
+|       |   
+|       +---.mvn
+|       |   \---wrapper
+|       |           maven-wrapper.properties
+|       |           
+|       \---src
+|           +---main
+|           |   +---java
+|           |   |   \---com
+|           |   |       \---task_management_system
+|           |   |           \---api_gateway
+|           |   |                   ApiGatewayApplication.java
+|           |   |                   
+|           |   \---resources
+|           |           application.properties
+|           |           
+|           \---test
+|               \---java
+|                   \---com
+|                       \---task_management_system
+|                           \---api_gateway
+|                                   ApiGatewayApplicationTests.java
+|                                   
++---auth-service
+|   \---auth-service
+|       |   .gitattributes
+|       |   .gitignore
+|       |   HELP.md
+|       |   mvnw
+|       |   mvnw.cmd
+|       |   pom.xml
+|       |   
+|       +---.mvn
+|       |   \---wrapper
+|       |           maven-wrapper.properties
+|       |           
+|       \---src
+|           +---main
+|           |   +---java
+|           |   |   \---com
+|           |   |       \---task_management_system
+|           |   |           \---auth_service
+|           |   |                   AuthServiceApplication.java
+|           |   |                   
+|           |   \---resources
+|           |       |   application.properties
+|           |       |   
+|           |       +---static
+|           |       \---templates
+|           \---test
+|               \---java
+|                   \---com
+|                       \---task_management_system
+|                           \---auth_service
+|                                   AuthServiceApplicationTests.java
+|                                   
++---task-service
+|   \---task-service
+|       |   .gitattributes
+|       |   .gitignore
+|       |   HELP.md
+|       |   mvnw
+|       |   mvnw.cmd
+|       |   pom.xml
+|       |   
+|       +---.mvn
+|       |   \---wrapper
+|       |           maven-wrapper.properties
+|       |           
+|       \---src
+|           +---main
+|           |   +---java
+|           |   |   \---com
+|           |   |       \---task_management_system
+|           |   |           \---task_service
+|           |   |                   TaskServiceApplication.java
+|           |   |                   
+|           |   \---resources
+|           |       |   application.properties
+|           |       |   
+|           |       +---static
+|           |       \---templates
+|           \---test
+|               \---java
+|                   \---com
+|                       \---task_management_system
+|                           \---task_service
+|                                   TaskServiceApplicationTests.java
+|                                   
+\---user-service
+    \---user-service
+        |   .gitattributes
+        |   .gitignore
+        |   HELP.md
+        |   mvnw
+        |   mvnw.cmd
+        |   pom.xml
+        |   
+        +---.mvn
+        |   \---wrapper
+        |           maven-wrapper.properties
+        |           
+        \---src
+            +---main
+            |   +---java
+            |   |   \---com
+            |   |       \---task_management_system
+            |   |           \---user_service
+            |   |                   UserServiceApplication.java
+            |   |                   
+            |   \---resources
+            |       |   application.properties
+            |       |   
+            |       +---static
+            |       \---templates
+            \---test
+                \---java
+                    \---com
+                        \---task_management_system
+                            \---user_service
+                                    UserServiceApplicationTests.java
+                                    
