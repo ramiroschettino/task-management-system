@@ -1,5 +1,5 @@
-Listado de rutas de carpetas para el volumen Windows
-El número de serie del volumen es B824-833F
+Listado de rutas de carpetas
+El n£mero de serie del volumen es C2D7-9C5E
 C:.
 |   .env
 |   docker-compose.yml
@@ -21,75 +21,85 @@ C:.
 |           Project_Default.xml
 |           
 +---api-gateway
-|   |   .gitattributes
-|   |   .gitignore
-|   |   Dockerfile
-|   |   HELP.md
-|   |   mvnw
-|   |   mvnw.cmd
-|   |   pom.xml
-|   |   
-|   +---.mvn
-|   |   \---wrapper
-|   |           maven-wrapper.properties
-|   |           
-|   \---src
-|       +---main
-|       |   +---java
-|       |   |   \---com
-|       |   |       \---task_management_system
-|       |   |           \---api_gateway
-|       |   |                   ApiGatewayApplication.java
-|       |   |                   
-|       |   \---resources
-|       |           application.yml
+|   \---api-gateway
+|       |   .gitattributes
+|       |   .gitignore
+|       |   Dockerfile
+|       |   mvnw
+|       |   mvnw.cmd
+|       |   pom.xml
+|       |   
+|       +---.mvn
+|       |   \---wrapper
+|       |           maven-wrapper.properties
 |       |           
-|       \---test
-|           \---java
-|               \---com
-|                   \---task_management_system
-|                       \---api_gateway
-|                               ApiGatewayApplicationTests.java
-|                               
+|       \---src
+|           +---main
+|           |   +---java
+|           |   |   \---com
+|           |   |       \---task_management_system
+|           |   |           \---api_gateway
+|           |   |                   ApiGatewayApplication.java
+|           |   |                   
+|           |   \---resources
+|           |           application.yml
+|           |           
+|           \---test
+|               \---java
+|                   \---com
+|                       \---task_management_system
+|                           \---api_gateway
+|                                   ApiGatewayApplicationTests.java
+|                                   
 +---auth-service
-|   |   .gitattributes
-|   |   .gitignore
-|   |   Dockerfile
-|   |   HELP.md
-|   |   mvnw
-|   |   mvnw.cmd
-|   |   pom.xml
-|   |   
-|   +---.mvn
-|   |   \---wrapper
-|   |           maven-wrapper.properties
-|   |           
-|   \---src
-|       +---main
-|       |   +---java
-|       |   |   \---com
-|       |   |       \---task_management_system
-|       |   |           \---auth_service
-|       |   |                   AuthServiceApplication.java
-|       |   |                   
-|       |   \---resources
-|       |       |   application.yml
-|       |       |   
-|       |       +---static
-|       |       \---templates
-|       \---test
-|           \---java
-|               \---com
-|                   \---task_management_system
-|                       \---auth_service
-|                               AuthServiceApplicationTests.java
-|                               
+|   \---auth-service
+|       |   .gitattributes
+|       |   .gitignore
+|       |   Dockerfile
+|       |   mvnw
+|       |   mvnw.cmd
+|       |   pom.xml
+|       |   
+|       +---.mvn
+|       |   \---wrapper
+|       |           maven-wrapper.properties
+|       |           
+|       \---src
+|           +---main
+|           |   +---java
+|           |   |   \---com
+|           |   |       \---task_management_system
+|           |   |           \---auth_service
+|           |   |               |   AuthServiceApplication.java
+|           |   |               |   
+|           |   |               +---config
+|           |   |               |       SecurityConfig.java
+|           |   |               |       
+|           |   |               +---controller
+|           |   |               |       AuthController.java
+|           |   |               |       
+|           |   |               +---dto
+|           |   |               |       AuthResponse.java
+|           |   |               |       LoginRequest.java
+|           |   |               |       
+|           |   |               \---service
+|           |   |                       AuthService.java
+|           |   |                       
+|           |   \---resources
+|           |           application.yml
+|           |           
+|           \---test
+|               \---java
+|                   \---com
+|                       \---task_management_system
+|                           \---auth_service
+|                                   AuthServiceApplicationTests.java
+|                                   
 +---task-service
 |   \---task-service
 |       |   .gitattributes
 |       |   .gitignore
 |       |   Dockerfile
-|       |   HELP.md
 |       |   mvnw
 |       |   mvnw.cmd
 |       |   pom.xml
@@ -107,10 +117,8 @@ C:.
 |           |   |                   TaskServiceApplication.java
 |           |   |                   
 |           |   \---resources
-|           |       |   application.yml
-|           |       |   
-|           |       +---static
-|           |       \---templates
+|           |           application.yml
+|           |           
 |           \---test
 |               \---java
 |                   \---com
@@ -123,7 +131,6 @@ C:.
         |   .gitattributes
         |   .gitignore
         |   Dockerfile
-        |   HELP.md
         |   mvnw
         |   mvnw.cmd
         |   pom.xml
@@ -141,10 +148,8 @@ C:.
             |   |                   UserServiceApplication.java
             |   |                   
             |   \---resources
-            |       |   application.yml
-            |       |   
-            |       +---static
-            |       \---templates
+            |           application.yml
+            |           
             \---test
                 \---java
                     \---com
