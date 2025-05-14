@@ -1,0 +1,24 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /auth
+
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/taskforge_auth
+    username: taskforge
+    password: secretpassword
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  security:
+    user:
+      name: admin
+      password: adminpass
+
+logging:
+  level:
+    org.springframework: DEBUG
+    com.task_management_system: TRACE

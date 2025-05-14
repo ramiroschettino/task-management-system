@@ -1,0 +1,8 @@
+spring:
+  data:
+    mongodb:
+      uri: ${MONGO_URI}
+      database: taskforge_users
+
+server:
+  port: 8083

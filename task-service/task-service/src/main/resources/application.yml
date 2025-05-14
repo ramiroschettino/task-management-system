@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: ${POSTGRES_URL}?currentSchema=tasks
+    username: ${POSTGRES_USERNAME}
+    password: ${POSTGRES_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
+
+server:
+  port: 8082
