@@ -82,8 +82,15 @@ C:.
 |           |   |               |       AuthResponse.java
 |           |   |               |       LoginRequest.java
 |           |   |               |       
+|           |   |               +---exception
+|           |   |               |       InvalidCredentialsException.java
+|           |   |               |       
+|           |   |               +---filter
+|           |   |               |       JwtAuthFilter.java
+|           |   |               |       
 |           |   |               \---service
 |           |   |                       AuthService.java
+|           |   |                       JwtService.java
 |           |   |                       
 |           |   \---resources
 |           |           application.yml

@@ -2,6 +2,7 @@ package com.task_management_system.auth_service.service;
 
 import com.task_management_system.auth_service.dto.AuthResponse;
 import com.task_management_system.auth_service.dto.LoginRequest;
+import com.task_management_system.auth_service.exception.InvalidCredentialsException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +16,20 @@ public class AuthService {
     }
 
     public AuthResponse authenticate(LoginRequest request) {
-        // Autenticación básica (usuario: admin, contraseña: password123)
-        if ("admin".equals(request.getUsername()) &&
-                passwordEncoder.matches("password123", passwordEncoder.encode("password123"))) {
-            return new AuthResponse("token-simulado", request.getUsername());
+
+        if (request.getUsername() == null || request.getPassword() == null) {
+            throw new InvalidCredentialsException("Username and password are required");
         }
-        return null; // O lanzar una excepción
+
+        if ("admin".equals(request.getUsername()) &&
+                passwordEncoder.matches(request.getPassword(), passwordEncoder.encode("password123"))) {
+
+            return AuthResponse.builder()
+                    .token("jwt-token-generado")
+                    .username(request.getUsername())
+                    .build();
+        }
+
+        throw new InvalidCredentialsException("Invalid username or password");
     }
 }
