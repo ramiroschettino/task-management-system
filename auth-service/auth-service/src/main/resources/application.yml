@@ -17,6 +17,9 @@ spring:
     user:
       name: admin
       password: adminpass
+jwt:
+  secret: "mySuperSecretKeyWithAtLeast32CharactersLong12345"
+  expiration-minutes: 1440
 
 logging:
   level:
