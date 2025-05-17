@@ -1,11 +1,11 @@
 services:
-  # ---- Bases de Datos ----
+  # ---- Base de Datos ----
   postgres:
     image: postgres:15-alpine
     environment:
       POSTGRES_USER: taskforge
       POSTGRES_PASSWORD: secretpassword
-      POSTGRES_DB: taskforge_auth
+      POSTGRES_DB: taskforge
     ports:
       - "5432:5432"
     volumes:
@@ -15,16 +15,6 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-
-  mongodb:
-    image: mongo:6.0
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongodb_data:/data/db
 
   # ---- Kafka ----
   zookeeper:
@@ -50,6 +40,7 @@ services:
       timeout: 5s
       retries: 3
 
+  # ---- Microservicios ----
   api-gateway:
     build: ./api-gateway/api-gateway
     ports:
@@ -83,10 +74,9 @@ services:
     ports:
       - "8083:8083"
     depends_on:
-      - mongodb
+      - postgres
     environment:
       - SPRING_PROFILES_ACTIVE=docker
 
 volumes:
   postgres_data:
-  mongodb_data:
