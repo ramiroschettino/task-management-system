@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://postgres:5432/taskforge
+    url: jdbc:postgresql://postgres:5432/taskforge_users
     username: taskforge
     password: secretpassword
   jpa:

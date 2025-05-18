@@ -25,6 +25,7 @@ spring:
         jdbc:
           lob:
             non_contextual_creation: true
+
   security:
     user:
       name: admin
@@ -35,6 +36,7 @@ jwt:
   expiration-minutes: 1440
   refresh-expiration-days: 7
   issuer: "task-management-system"
+  expiration: 86400000
 
 management:
   endpoints:

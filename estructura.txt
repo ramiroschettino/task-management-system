@@ -4,6 +4,7 @@ C:.
 |   .env
 |   docker-compose.yml
 |   estructura.txt
+|   init-multiple-dbs.sql
 |   README.md
 |   
 +---.idea
@@ -83,6 +84,7 @@ C:.
 |           |   |               +---dto
 |           |   |               |       AuthResponse.java
 |           |   |               |       LoginRequest.java
+|           |   |               |       RegisterRequest.java
 |           |   |               |       
 |           |   |               +---exception
 |           |   |               |       InvalidCredentialsException.java
@@ -162,6 +164,9 @@ C:.
             |   |           \---user_service
             |   |               |   UserServiceApplication.java
             |   |               |   
+            |   |               +---config
+            |   |               |       PasswordEncoderConfig.java
+            |   |               |       
             |   |               +---controller
             |   |               |       UserController.java
             |   |               |       

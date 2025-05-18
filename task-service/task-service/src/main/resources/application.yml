@@ -1,13 +1,13 @@
+server:
+  port: 8082
+
 spring:
   datasource:
-    url: ${POSTGRES_URL}?currentSchema=tasks
-    username: ${POSTGRES_USERNAME}
-    password: ${POSTGRES_PASSWORD}
+    url: jdbc:postgresql://postgres:5432/taskforge_tasks
+    username: taskforge
+    password: secretpassword
   jpa:
     hibernate:
       ddl-auto: update
   kafka:
-    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
-
-server:
-  port: 8082
+    bootstrap-servers: kafka:29092
