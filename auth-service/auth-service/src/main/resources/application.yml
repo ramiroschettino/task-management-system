@@ -13,9 +13,12 @@ spring:
     hikari:
       connection-timeout: 30000
       maximum-pool-size: 10
+      minimum-idle: 2
+      initialization-fail-timeout: 60000  # Aumentar tiempo de espera para conexión inicial
+
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update  # Cambiado de validate a update temporalmente
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show-sql: true
@@ -25,6 +28,7 @@ spring:
         jdbc:
           lob:
             non_contextual_creation: true
+        connection.provider_disables_autocommit: true
 
   security:
     user:
@@ -38,23 +42,37 @@ jwt:
   issuer: "task-management-system"
   expiration: 86400000
 
+
 management:
   endpoints:
     web:
       exposure:
-        include: health,info,metrics
+        include: health,info,metrics,env
+      base-path: /actuator
   endpoint:
     health:
       show-details: always
+      probes:
+        enabled: true
+    metrics:
+      enabled: true
+  health:
+    db:
+      enabled: true
+    diskspace:
+      enabled: true
 
 logging:
   level:
+    root: INFO
     org.springframework: INFO
-    org.springframework.security: DEBUG
+    org.springframework.web: INFO
     org.hibernate.SQL: DEBUG
-    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    com.zaxxer.hikari: INFO
     com.task_management_system: DEBUG
   file:
     name: logs/auth-service.log
+    max-size: 10MB
+    max-history: 7
   pattern:
-    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"

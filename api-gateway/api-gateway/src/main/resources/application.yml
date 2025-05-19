@@ -9,15 +9,43 @@ spring:
           uri: http://auth-service:8081
           predicates:
             - Path=/api/auth/**
+          filters:
+            - RewritePath=/api/auth/(?<segment>.*), /auth/api/auth/$\{segment}
+
         - id: task-service
           uri: http://task-service:8082
           predicates:
             - Path=/api/tasks/**
+
         - id: user-service
           uri: http://user-service:8083
           predicates:
             - Path=/api/users/**
 
+      httpclient:
+        connect-timeout: 1000
+        response-timeout: 5s
+
+  application:
+    name: api-gateway
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,gateway
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: always
+    gateway:
+      enabled: true
+
 logging:
   level:
     org.springframework.cloud.gateway: DEBUG
+    org.springframework.http.server.reactive: INFO
+    org.springframework.web.reactive: INFO
+    reactor.netty: INFO
+  pattern:
+    console: "%d{HH:mm:ss} %-5level %logger{36} - %msg%n"

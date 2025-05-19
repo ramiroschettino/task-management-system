@@ -1,5 +1,5 @@
-Listado de rutas de carpetas para el volumen Windows
-El número de serie del volumen es B824-833F
+Listado de rutas de carpetas
+El n£mero de serie del volumen es C2D7-9C5E
 C:.
 |   .env
 |   docker-compose.yml
@@ -26,7 +26,6 @@ C:.
 |       |   .gitattributes
 |       |   .gitignore
 |       |   Dockerfile
-|       |   HELP.md
 |       |   mvnw
 |       |   mvnw.cmd
 |       |   pom.xml
@@ -58,7 +57,6 @@ C:.
 |       |   .gitattributes
 |       |   .gitignore
 |       |   Dockerfile
-|       |   HELP.md
 |       |   mvnw
 |       |   mvnw.cmd
 |       |   pom.xml
@@ -76,6 +74,7 @@ C:.
 |           |   |               |   AuthServiceApplication.java
 |           |   |               |   
 |           |   |               +---config
+|           |   |               |       AuthenticationConfig.java
 |           |   |               |       SecurityConfig.java
 |           |   |               |       
 |           |   |               +---controller
@@ -97,10 +96,8 @@ C:.
 |           |   |                       JwtService.java
 |           |   |                       
 |           |   \---resources
-|           |       |   application.yml
-|           |       |   
-|           |       +---static
-|           |       \---templates
+|           |           application.yml
+|           |           
 |           \---test
 |               \---java
 |                   \---com
@@ -113,7 +110,6 @@ C:.
 |       |   .gitattributes
 |       |   .gitignore
 |       |   Dockerfile
-|       |   HELP.md
 |       |   mvnw
 |       |   mvnw.cmd
 |       |   pom.xml
@@ -131,10 +127,8 @@ C:.
 |           |   |                   TaskServiceApplication.java
 |           |   |                   
 |           |   \---resources
-|           |       |   application.yml
-|           |       |   
-|           |       +---static
-|           |       \---templates
+|           |           application.yml
+|           |           
 |           \---test
 |               \---java
 |                   \---com
@@ -147,7 +141,6 @@ C:.
         |   .gitattributes
         |   .gitignore
         |   Dockerfile
-        |   HELP.md
         |   mvnw
         |   mvnw.cmd
         |   pom.xml
@@ -181,10 +174,8 @@ C:.
             |   |                       UserService.java
             |   |                       
             |   \---resources
-            |       |   application.yml
-            |       |   
-            |       +---static
-            |       \---templates
+            |           application.yml
+            |           
             \---test
                 \---java
                     \---com

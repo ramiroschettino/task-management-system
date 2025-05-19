@@ -1,12 +1,11 @@
 services:
-  # ---- Base de Datos ----
   postgres:
     image: postgres:15-alpine
     container_name: taskforge_postgres
     environment:
       POSTGRES_USER: taskforge
       POSTGRES_PASSWORD: secretpassword
-      POSTGRES_DB: taskforge  # este se crea por defecto, los otros los creamos vía SQL
+      POSTGRES_DB: taskforge
     ports:
       - "5432:5432"
     volumes:
@@ -18,7 +17,6 @@ services:
       timeout: 5s
       retries: 5
 
-  # ---- Kafka ----
   zookeeper:
     image: confluentinc/cp-zookeeper:7.4.0
     container_name: taskforge_zookeeper
@@ -38,53 +36,66 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
     ports:
       - "9092:9092"
-    healthcheck:
-      test: ["CMD", "kafka-topics", "--bootstrap-server", "localhost:9092", "--list"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
 
-  # ---- Microservicios ----
   api-gateway:
     build: ./api-gateway/api-gateway
     container_name: taskforge_api_gateway
     ports:
       - "8085:8080"
     depends_on:
-      - auth-service
-      - task-service
-      - user-service
+      auth-service:
+        condition: service_started
+      task-service:
+        condition: service_started
+      user-service:
+        condition: service_started
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
   auth-service:
     build: ./auth-service/auth-service
     container_name: taskforge_auth_service
-    ports:
-      - "8081:8081"
-    depends_on:
-      - postgres
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+      - SERVER_PORT=8081
+      - SERVER_SERVLET_CONTEXT_PATH=/auth
+    depends_on:
+      - postgres
 
   task-service:
     build: ./task-service/task-service
     container_name: taskforge_task_service
-    ports:
-      - "8082:8082"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SERVER_PORT=8082
+      - MANAGEMENT_SERVER_PORT=8082
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8082/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
     depends_on:
       - postgres
       - kafka
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
 
   user-service:
     build: ./user-service/user-service
     container_name: taskforge_user_service
-    ports:
-      - "8083:8083"
-    depends_on:
-      - postgres
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+      - SERVER_PORT=8083
+      - MANAGEMENT_SERVER_PORT=8083
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8083/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    depends_on:
+      postgres:
+        condition: service_healthy
 
 volumes:
   postgres_data:

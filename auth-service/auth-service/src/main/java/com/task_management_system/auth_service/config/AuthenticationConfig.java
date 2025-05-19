@@ -16,12 +16,12 @@ public class AuthenticationConfig {
 
     @Bean
     public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
-        UserDetails user = User.builder()
+        UserDetails admin = User.builder()
                 .username("admin")
-                .password(passwordEncoder.encode("password123"))
+                .password(passwordEncoder.encode("adminpass")) // Coincide con tu application.yml
                 .roles("ADMIN")
                 .build();
-        return new InMemoryUserDetailsManager(user);
+        return new InMemoryUserDetailsManager(admin);
     }
 
     @Bean
