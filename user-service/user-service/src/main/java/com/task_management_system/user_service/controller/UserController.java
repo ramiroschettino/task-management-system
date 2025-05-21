@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -15,6 +16,26 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @PostMapping("/validate")
+    public ResponseEntity<Map<String, Object>> validateUser(@RequestBody Map<String, String> credentials) {
+        String username = credentials.get("username");
+        String email = credentials.get("email");
+        String password = credentials.get("password");
+
+        Optional<User> userOpt = username != null
+                ? userService.findByUsername(username)
+                : (email != null ? userService.findByEmail(email) : Optional.empty());
+
+        Map<String, Object> response = new java.util.HashMap<>();
+        if (userOpt.isPresent() && password != null && userService.checkPassword(password, userOpt.get().getPassword())) {
+            User user = userOpt.get();
+            response.put("username", user.getUsername());
+            response.put("role", user.getRole() != null ? user.getRole().name() : "USER");
+            return ResponseEntity.ok(response);
+        }
+        return ResponseEntity.status(401).build();
+    }
 
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User userRequest) {

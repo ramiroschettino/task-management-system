@@ -42,6 +42,10 @@ public class UserService {
         return userRepository.findByUsername(username);
     }
 
+    public Optional<User> findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
     public boolean existsByUsername(String username) {
         return userRepository.existsByUsername(username);
     }
@@ -52,5 +56,15 @@ public class UserService {
 
     public boolean checkPassword(String rawPassword, String encodedPassword) {
         return passwordEncoder.matches(rawPassword, encodedPassword);
+    }
+
+    public boolean validateCredentials(String usernameOrEmail, String password) {
+        Optional<User> userOpt = usernameOrEmail.contains("@")
+                ? findByEmail(usernameOrEmail)
+                : findByUsername(usernameOrEmail);
+        if (userOpt.isPresent()) {
+            return checkPassword(password, userOpt.get().getPassword());
+        }
+        return false;
     }
 }
