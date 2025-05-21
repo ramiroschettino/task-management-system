@@ -27,12 +27,6 @@ spring:
             non_contextual_creation: true
         connection.provider_disables_autocommit: true
 
-  security:
-    user:
-      name: admin
-      password: adminpass
-    filter:
-      disable: true
 jwt:
   secret: "mySuperSecretKeyWithAtLeast32CharactersLong12345"
   expiration-minutes: 1440

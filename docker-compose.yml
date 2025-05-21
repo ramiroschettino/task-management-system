@@ -61,7 +61,6 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - SERVER_PORT=8081
-      - SERVER_SERVLET_CONTEXT_PATH=/auth
     depends_on:
       - postgres
 

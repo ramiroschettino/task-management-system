@@ -23,7 +23,7 @@ public class AuthService {
         }
 
         if ("admin".equals(request.getUsername()) &&
-                passwordEncoder.matches(request.getPassword(), passwordEncoder.encode("password123"))) {
+                "password123".equals(request.getPassword())) {
 
             return AuthResponse.builder()
                     .token("jwt-token-generado")
